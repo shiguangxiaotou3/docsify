@@ -1,0 +1,25 @@
+{
+    "name": "shiguangxiaotou3/docsify",
+    "description": "这插件为你的 WordPress 网站带来 Docsify 强大的文档功能。",
+    "keywords": [
+        "wprdpress", "docsify","markdown", "plugins"
+    ],
+    "homepage": "http://www.shiguangxiaotou.com",
+    "type": "project",
+    "license": "MIT",
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "Shiguangxiaotou3\\Docsify\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shiguangxiaotou3",
+            "email": "39594590+shiguangxiaotou3@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    }
+}
