@@ -14,7 +14,7 @@ class DocsifyController extends BaseController {
     public function actionIndex(){
 
         $main =$this->getOptions();
-
+        $main['docsify']["basePath"]= "/wp-admin/admin-ajax.php?action=docsify/markdown&file=";
         return $this->render('docsify/index',['main'=>$main]);
     }
 
@@ -165,10 +165,10 @@ class DocsifyController extends BaseController {
             $assets = MarkdownAsset::publish("@bower/markdown",true);
 
             $main = $this->getOptions();
-            $main['docsify']['basePath'] = $assets[2];
+            $main['docsify']['basePath'] = $assets[2]."/";
             $this->setOptions($main);
             return $this->success("Success",
-                ["name" => '@MarkdownAsset', "url" => $assets[2]]);
+                ["name" => '@MarkdownAsset', "url" => $assets[2]."/"]);
         }
         return $this->error('你没有访问权限');
 
@@ -293,12 +293,16 @@ class DocsifyController extends BaseController {
                 "docsify" => [
                     "name" => get_bloginfo('name'),
                     "loadNavbar" => "_navbar.md",
-                    "loadSidebar" => "_sidebar.md",
-                    "coverpage" => "_coverpage.md",
-                    "loadFooter" => '_footer.md',
-                    "basePath" => "/wp-admin/admin-ajax.php?action=docsify/markdown&file=",
+                    "loadSidebar" =>"_sidebar.md",
+                    "coverpage" =>"_coverpage.md",
+                    "loadFooter" =>"_footer.md",
+                    "mergeNavbar"=> true,
+                    "basePath" => "/docsify",
                     "formatUpdated" => "{MM}/{DD} {HH}:{mm}",
-                    "maxLevel" => 3
+                    "maxLevel" => 3,
+                    "subMaxLevel"=> 2,
+                    "fallbackLanguages"=>['zh-CN'],
+                    "repo"=>'shiguangxiaotou3/docsify',
                 ],
                 "themes" => [
                     "vue" => ["css" => ['@DocsifyAsset/css/vue.css']],
